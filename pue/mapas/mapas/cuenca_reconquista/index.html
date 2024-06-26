@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" style="margin:0px; width:100vw; height:100vh;">
+    <head>
+        <title>PUE IIIA - Mapa de la cuenca del Río Reconquista</title>
+        <link rel="icon" href="./images/IIIA-CONICET-UNSaM_web.png">
+        <meta charset=UTF-8>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
+        <meta
+            name="description"
+            content="PUE -Proyecto de Unidad Ejecutora-,
+                IIIA - Instituto de Investigación e Ingeniería Ambiental,
+                CONICET - UNSAM,
+                Mapa de la Cuenca del Río Reconquista."
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+        <script type="importmap">
+            {
+                "imports": {
+                    "leaflet": "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js"
+                }
+            }
+        </script>
+
+    </head>
+    <body style="margin:0px; width:100%; height:100%;">
+        <div id="map" style="width:100%; height:100%;">
+        </div>
+        <script type="module" src="./map.js"></script>
+    </body>
+
