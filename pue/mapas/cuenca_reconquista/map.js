@@ -1,5 +1,5 @@
 import * as L from 'leaflet';
-import { minimap } from "./modules/minima.js"
+import { minimap } from "minimap";
 
 function init () {
     const argenmap = new L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png',
