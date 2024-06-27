@@ -11,7 +11,7 @@ function init () {
     const map = new L.map('map',
         {
             attributionControl: false,
-            center: new L.LatLng(-58.6608, -34.5790),
+            center: new L.LatLng(-34.5790, -58.6608),
             zoom: 11,
             zoomControl: true,
             layers: [argenmap]
@@ -29,9 +29,12 @@ function init () {
         {prefix: ''}
     ).addTo(map
     ).getContainer();
-    // Texto
-    let attr_text = '<a href="https://leafletjs.com/" title="Leaflet - a JavaScript library for interactive maps="_blank">Leaflet</a>'
-    attr_text += ' + <a href="https://www.ign.gob.ar/AreaServicios/Argenmap/Introduccion" title="Introducción | Instituto Geográfico Nacional" target="_blank">Argenmap</a>'
+    // Textos
+    const attr_iiia = '<a href="https://iiia.conicet.gov.ar/" title="IIIA | Instituto de Investigación e Ingeniería Ambiental" target="_blank">IIIA</a>';
+    const attr_osm = '<a href="https://www.openstreetmap.org" title="OpenStreetMap" target="_blank">OpenStreetMap</a>';
+    const attr_argenmap = '<a href="https://www.ign.gob.ar/AreaServicios/Argenmap/Introduccion" title="Introducción | Instituto Geográfico Nacional" target="_blank">Argenmap</a>';
+    const attr_leaflet = '<a href="https://leafletjs.com/" title="Leaflet - a JavaScript library for interactive maps" target="_blank">Leaflet</a>';
+    const attr_text = [attr_iiia, attr_argenmap, attr_leaflet, attr_osm].join(' + ');
     // Definir texto en elemento panel
     attr.innerHTML = attr_text
 
