@@ -1,0 +1,14 @@
+.mm_panel {
+  width: 200px;
+  height: 250px;
+  display: flex;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+#minimap {
+  width: 180px;
+  height: 230px;
+  margin: auto;
+}
