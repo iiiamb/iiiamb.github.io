@@ -1,6 +1,6 @@
 import * as L from 'leaflet';
-import { minimap } from "minimap";
-import { cuenca_geojson } from "cuenca_reconq-secr_ener";
+import { crear_cuenca } from "modulos/capas.js";
+import { minimap } from "modulos/minimap.js";
 
 function init () {
 
@@ -13,13 +13,17 @@ function init () {
     }
   );
 
+  // Cuenca
+  const cuenca = crear_cuenca();
+  const centroide_bbox = cuenca.capa.getBounds().getCenter();
+
   // Mapa principal
   const map = new L.map(
     'map',
     {
       attributionControl: false,
-      center: new L.LatLng(-34.5790, -58.6608),
-      zoom: 11,
+      center: centroide_bbox,
+      zoom: 10,
       zoomControl: true,
       layers: [argenmap]
     }
@@ -84,7 +88,11 @@ function init () {
   mm_ctrl.addTo(map);
 
   // Crear el minimap dentro del elemento div con id minimap del control
-  const mm = minimap('minimap', map.getZoom() - 5);
+  const mm = minimap(
+    'minimap',
+    centroide_bbox,
+    map.getZoom() - 5
+  );
 
   // Crear la capa recuadro dentro del minimapa
   const recuadro = L.rectangle(
@@ -103,7 +111,10 @@ function init () {
     recuadro.setBounds(map.getBounds());
   });
 
-  L.geoJson(cuenca_geojson).addTo(map);
+
+  // Agregar capa de cuenca al mapa principal
+  cuenca.capa.addTo(map);
+
 };
 
 init();

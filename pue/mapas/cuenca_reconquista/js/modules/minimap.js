@@ -1,6 +1,6 @@
 import * as L from 'leaflet';
 
-export function minimap (id, z) {
+export function minimap (id, c, z) {
 
   // Capa argenmap gris
   const argenmap_gris = new L.tileLayer(
@@ -15,7 +15,7 @@ export function minimap (id, z) {
     id,
     {
       attributionControl: false,
-      center: new L.LatLng(-34.5790, -58.6608),
+      center: c,
       zoom: z,
       zoomControl: false,
       layers: [argenmap_gris]
