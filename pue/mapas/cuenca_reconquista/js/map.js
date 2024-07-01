@@ -1,8 +1,8 @@
 import * as L from 'leaflet';
 import { minimap } from "minimap";
+import { cuenca_geojson } from "cuenca_reconq-secr_ener";
 
 function init () {
-
 
   // Capa argenmap
   const argenmap = new L.tileLayer(
@@ -12,7 +12,6 @@ function init () {
       maxZoom: 20
     }
   );
-
 
   // Mapa principal
   const map = new L.map(
@@ -35,6 +34,7 @@ function init () {
   );
   scalebar.addTo(map);
 
+
   //=====
   // Créditos
   //=====
@@ -42,7 +42,7 @@ function init () {
   // Crear el control
   const attr_ctrl = new L.control.attribution(
     {
-      prefix: '',
+      prefix: null,
       position: 'bottomright',
     }
   );
@@ -103,6 +103,7 @@ function init () {
     recuadro.setBounds(map.getBounds());
   });
 
+  L.geoJson(cuenca_geojson).addTo(map);
 };
 
 init();
