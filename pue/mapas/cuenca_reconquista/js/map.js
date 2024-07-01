@@ -2,12 +2,17 @@ import * as L from 'leaflet';
 import { minimap } from "minimap";
 
 function init () {
+
+
+  // Capa argenmap
   const argenmap = new L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png',
     {
-      minZoom: 1,
+      minZoom: 5, // Las capas que van al mapa principal tienen zoom minimo
       maxZoom: 20
     }
   );
+
+
 
   const map = new L.map('map',
     {
@@ -18,6 +23,8 @@ function init () {
       layers: [argenmap]
     }
   );
+
+  console.log(map.getBounds());
 
   //=====
   // Créditos
@@ -64,14 +71,26 @@ function init () {
 
     return panel;
   };
-  // Agregar al mapa
+  // Agregar al mapa principal
   mm_ctrl.addTo(map);
 
-  const mm = minimap('minimap', 6);
+  // Crear el minimap dentro del elemento div con id minimap del control
+  const mm = minimap('minimap', map.getZoom() - 5);
+
+  // Crear la capa recuadro dentro del minimapa
+  const recuadro = L.rectangle(map.getBounds(),
+    {
+      color: "#ff7800",
+      weight: 1,
+      interactive:false
+    }
+  );
+  recuadro.addTo(mm);
 
   //  Dragend (actualizar el minimapa en base a los nuevos bounds del mapa)
   map.on('zoomend moveend', function (event) {
     mm.setView(map.getBounds().getCenter(), map.getZoom() - 5 );
+    recuadro.setBounds(map.getBounds());
   });
 
 }
