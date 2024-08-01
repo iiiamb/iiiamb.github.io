@@ -8,7 +8,7 @@ export function crear_cuenca () {
   }
 
   cuenca.getColor = function (id) {
-    return id = 1 ? ['#e7ffd4', '#b3bfaa'] :
+    return id = 1 ? ['#008080', '#808000'] :
            id = 2 ? ['#d4fcff', ''] :
            id = 3 ? ['#ecd4ff', ''] :
                     ['#ffe2d4', '']
