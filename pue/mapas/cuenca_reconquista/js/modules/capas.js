@@ -45,22 +45,21 @@ export function crear_sectores () {
     "nombre": "sectores"
   }
 
-  sectores.getColor = function (Tramo) {
-    return Tramo == 'Cuenca Alta' ? ['#008080', '#808000'] :
-           Tramo == 'Cuenca Media' ? ['#800040', '#808000'] :
-           Tramo == 'Cuenca Baja' ? ['#804000', '#808000'] :
-                    ['#ffe2d4', '']
-  }
+sectores.getColor = function (Tramo) {
+  return Tramo == 'Cuenca Alta'  ? ['#b3e5fc', '#607d8b'] :
+         Tramo == 'Cuenca Media' ? ['#b2dfdb', '#607d8b'] :
+         Tramo == 'Cuenca Baja'  ? ['#d1c4e9', '#607d8b'] :
+                  ['#ffe2d4', '#607d8b'];
+}
 
   sectores.estilo = function (feature) {
     const color = sectores.getColor(feature.properties.Tramo);
     return {
-        weight: 1,
-        opacity: 0.8,
-        color: color[1],
-        dashArray: '3',
-        fillColor: color[0],
-        fillOpacity: 0.5
+    weight: 1,
+    opacity: 1,
+    color: color[1],
+    fillColor: color[0],
+    fillOpacity: 0.6
     };
   };
 
@@ -90,8 +89,8 @@ export function crear_redhidrica () {
     const color = redhidrica.getColor();
     return {
         color: color[0],
-        weight: 1,
-        opacity: 1,
+        weight: 0.5,
+        opacity: 0.9,
     };
   };
 

@@ -115,14 +115,13 @@ function init () {
     recuadro.setBounds(map.getBounds());
   });
 
-  // Agregar red hídrica.
-  const redhidrica = crear_redhidrica();
-  redhidrica.capa.addTo(map);
-
   // Agregar capa de sectores al mapa principal
   const sectores = crear_sectores();
   sectores.capa.addTo(map);
 
+  // Agregar red hídrica.
+  const redhidrica = crear_redhidrica();
+  redhidrica.capa.addTo(map);
 };
 
 init();
