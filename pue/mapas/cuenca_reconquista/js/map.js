@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
 import { crear_cuenca } from "modulos/capas.js";
+import { crear_redhidrica } from './modules/capas.js';
 import { minimap } from "modulos/minimap.js";
 
 function init () {
@@ -115,7 +116,11 @@ function init () {
   // Agregar capa de cuenca al mapa principal
   cuenca.capa.addTo(map);
 
+  // Agregar red hídrica.
+  const redhidrica = crear_redhidrica();
+  redhidrica.capa.addTo(map);
+
+
 };
 
 init();
-
