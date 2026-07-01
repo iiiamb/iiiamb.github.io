@@ -1,13 +1,16 @@
 import * as L from 'leaflet';
 import { crear_cuenca } from "modulos/capas.js";
+import { crear_sectores } from './modules/capas.js';
 import { crear_redhidrica } from './modules/capas.js';
 import { minimap } from "modulos/minimap.js";
 
 function init () {
 
+  const url_argenmap = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png'
+  const url_argenmapgris = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   // Capa argenmap
   const argenmap = new L.tileLayer(
-    'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png',
+    url_argenmapgris,
     {
       minZoom: 5, // Las capas que van al mapa principal tienen zoom minimo
       maxZoom: 20
@@ -112,14 +115,13 @@ function init () {
     recuadro.setBounds(map.getBounds());
   });
 
-
-  // Agregar capa de cuenca al mapa principal
-  cuenca.capa.addTo(map);
-
   // Agregar red hídrica.
   const redhidrica = crear_redhidrica();
   redhidrica.capa.addTo(map);
 
+  // Agregar capa de sectores al mapa principal
+  const sectores = crear_sectores();
+  sectores.capa.addTo(map);
 
 };
 
