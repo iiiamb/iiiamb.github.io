@@ -1,7 +1,7 @@
 import * as L from 'leaflet';
-import { crear_cuenca } from "modulos/capas.js";
-import { crear_sectores } from './modules/capas.js';
-import { crear_redhidrica } from './modules/capas.js';
+import { crear_sectores } from 'modulos/capas.js';
+import { crear_redhidrica } from 'modulos/capas.js';
+import { crear_referencias } from 'modulos/referencias.js'
 import { minimap } from "modulos/minimap.js";
 
 function init () {
@@ -17,8 +17,8 @@ function init () {
     }
   );
 
-  // Cuenca
-  const cuenca = crear_cuenca();
+  // Cuenca (sectores)
+  const cuenca = crear_sectores();
   const centroide_bbox = cuenca.capa.getBounds().getCenter();
 
   // Mapa principal
@@ -116,12 +116,15 @@ function init () {
   });
 
   // Agregar capa de sectores al mapa principal
-  const sectores = crear_sectores();
-  sectores.capa.addTo(map);
+  cuenca.capa.addTo(map);
 
   // Agregar red hídrica.
   const redhidrica = crear_redhidrica();
   redhidrica.capa.addTo(map);
+
+  // Agregar referencias.
+  const referencias = crear_referencias();
+  referencias.addTo(map);
 };
 
 init();
