@@ -1,7 +1,7 @@
 # Pendientes
 
 ## Errores
-- [ ] `pue/index.html`: dos documentos HTML concatenados; `</a>` sobrante en el `<h2>`.
+- [x] `pue/index.html`: dos documentos HTML concatenados; `</a>` sobrante en el `<h2>`.
 - [ ] Páginas índice: `<il>` → `<li>`; `lang="en"` → `lang="es"`.
 - [ ] `capas.js`, `crear_cuenca`: `getColor` usa `=` en lugar de `===`.
 - [ ] `minimap.js`: la variable `argenmap_gris` usa la URL de Argenmap color. Decidir qué base va y alinear el nombre.
@@ -24,4 +24,4 @@
 - [ ] Completar la procedencia de cada capa en `docs/specs/reconquista.md`.
 
 ## Publicación
-- [ ] Después del push, verificar que `iiiamb.github.io/CLAUDE.html` y `/docs/pendientes.html` den 404.
+- [x] Después del push, verificar que `iiiamb.github.io/CLAUDE.html` y `/docs/pendientes.html` den 404.

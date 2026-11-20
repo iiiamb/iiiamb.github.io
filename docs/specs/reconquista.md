@@ -9,6 +9,7 @@ Mapa base de presentación del Proyecto de Unidad Ejecutora. Se ve en https://ii
 - Sitio estático en GitHub Pages, publicado desde `main` (Jekyll por defecto, sin build propio).
 - Leaflet 1.9.4 como módulo ES desde unpkg, resuelto con `importmap`.
 - Datos como módulos JS (`export const`) en `js/geojs/`.
+- Acceso: la página del IIIA (no admite mapas web ni iframes) muestra una captura del mapa que enlaza a la GitHub Page. Cuando cambia el aspecto del mapa hay que actualizar la captura en esa página.
 
 ## Mapa base
 - Principal: Argenmap gris (IGN), zoom 5 a 20.
