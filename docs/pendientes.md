@@ -2,7 +2,7 @@
 
 ## Errores
 - [x] `pue/index.html`: dos documentos HTML concatenados; `</a>` sobrante en el `<h2>`.
-- [ ] Páginas índice: `<il>` → `<li>`; `lang="en"` → `lang="es"`.
+- [x] Páginas índice: `<il>` → `<li>`; `lang="en"` → `lang="es"`.
 - [ ] `capas.js`, `crear_cuenca`: `getColor` usa `=` en lugar de `===`.
 - [ ] `minimap.js`: la variable `argenmap_gris` usa la URL de Argenmap color. Decidir qué base va y alinear el nombre.
 - [ ] Créditos: revisar si corresponde OpenStreetMap; agregar las fuentes de los datos (Serman, Secretaría de Energía).
