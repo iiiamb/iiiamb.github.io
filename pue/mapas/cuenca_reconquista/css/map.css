@@ -51,3 +51,22 @@
 .legend polyline {
   fill: none;
 }
+
+/* Etiquetas de cursos de agua (etiquetas.js).
+   Itálica serif, convención para hidrografía; color de la red hídrica en simbologia.js. */
+.etiqueta_curso {
+  pointer-events: none;
+}
+
+.etiqueta_curso_texto {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  white-space: nowrap;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 12px;
+  color: #005ce6;
+  text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff;
+}

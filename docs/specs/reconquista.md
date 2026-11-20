@@ -28,7 +28,7 @@ Todas en CRS84 (lon/lat WGS84). La red hídrica trae una coordenada z igual a 0.
 Definida en un solo lugar, `js/modules/simbologia.js`, que usan las capas y el panel de referencias. La leyenda parte del estilo del mapa y puede ajustarlo: en el mapa los polígonos son semitransparentes para dejar ver el mapa base, en la leyenda (fondo blanco) se usa otra opacidad para que los colores se parezcan a los que se ven en el mapa.
 
 ## Interacciones
-- Actuales: zoom, desplazamiento, minimapa sincronizado, escala, referencias.
+- Actuales: zoom, desplazamiento, minimapa sincronizado, escala, referencias, etiquetas de cursos de agua desde zoom 10.
 - Previstas: ver `docs/pendientes.md`.
 
 ## Decisiones
@@ -36,3 +36,4 @@ Registrar acá las decisiones de diseño con fecha.
 
 - 2026-11-20: simbología unificada en `simbologia.js`; el estilo de la leyenda se define como ajustes sobre el del mapa (`leyenda`), no como una copia.
 - 2026-11-20: embalse del Dique Roggero desde OSM. Se usa el espejo de agua (relación 1859580), no la presa (relación 3812049, el muro). Se dibuja entre sectores y red hídrica para que los cursos queden encima.
+- 2026-11-20: etiquetas con el nombre de los arroyos Arias, La Choza y El Durazno y del Río de la Reconquista, en `etiquetas.js`. Cada una se ubica por `fid` y fracción del largo de la línea; el texto es `Name`. Una sola inclinación por etiqueta, la de la cuerda entre los extremos de la etiqueta sobre la línea, recalculada con cada zoom. Itálica serif de 11 px en el azul de la red hídrica, con halo blanco. Se ocultan por debajo del zoom 10. El Arias se etiqueta una sola vez, sobre la feature larga (fid 102); la otra feature con ese nombre (fid 118, 4 km, aislada al norte) no se etiqueta.

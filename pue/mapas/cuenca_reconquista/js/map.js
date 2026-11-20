@@ -1,6 +1,7 @@
 import * as L from 'leaflet';
 import { crearSectores, crearEmbalseRoggero, crearRedHidrica } from 'modulos/capas.js';
 import { crearReferencias } from 'modulos/referencias.js'
+import { crearEtiquetasCursos } from 'modulos/etiquetas.js';
 import { minimap } from "modulos/minimap.js";
 
 function init () {
@@ -123,6 +124,9 @@ function init () {
   // Agregar red hídrica.
   const redHidrica = crearRedHidrica();
   redHidrica.capa.addTo(map);
+
+  // Agregar etiquetas de cursos de agua (se muestran según el zoom).
+  crearEtiquetasCursos(map);
 
   // Agregar referencias.
   const referencias = crearReferencias();
