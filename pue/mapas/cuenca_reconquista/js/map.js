@@ -1,6 +1,5 @@
 import * as L from 'leaflet';
-import { crearSectores } from 'modulos/capas.js';
-import { crearRedHidrica } from 'modulos/capas.js';
+import { crearSectores, crearRedHidrica } from 'modulos/capas.js';
 import { crearReferencias } from 'modulos/referencias.js'
 import { minimap } from "modulos/minimap.js";
 
@@ -8,7 +7,7 @@ function init () {
 
   const URL_ARGENMAP_GRIS = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   // Capa argenmap gris
-  const argenmapGris = new L.tileLayer(
+  const argenmapGris = L.tileLayer(
     URL_ARGENMAP_GRIS,
     {
       minZoom: 5, // Las capas que van al mapa principal tienen zoom minimo
@@ -21,7 +20,7 @@ function init () {
   const centroideBbox = cuenca.capa.getBounds().getCenter();
 
   // Mapa principal
-  const map = new L.map(
+  const map = L.map(
     'map',
     {
       attributionControl: false,
@@ -47,7 +46,7 @@ function init () {
   //=====
 
   // Crear el control
-  const attrCtrl = new L.control.attribution(
+  const attrCtrl = L.control.attribution(
     {
       prefix: null,
       position: 'bottomright',

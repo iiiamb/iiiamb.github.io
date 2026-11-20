@@ -12,3 +12,42 @@
   height: 230px;
   margin: auto;
 }
+
+/* Panel de referencias */
+.legend {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  line-height: 15px;
+  color: #333;
+}
+
+.legend h4 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.legend .ref_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* Muestra de cada referencia; colores y opacidad vienen de simbologia.js */
+.legend .ref_muestra {
+  float: left;
+  margin-right: 8px;
+}
+
+.legend i.ref_muestra {
+  width: 18px;
+  height: 13px;
+}
+
+.legend polyline {
+  fill: none;
+}

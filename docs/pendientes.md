@@ -9,8 +9,8 @@
 ## Código
 - [x] Renombrar a camelCase (commit aparte, sin cambios de comportamiento).
 - [x] Una sola definición de simbología para capas y referencias.
-- [ ] Pasar los estilos inline de `referencias.js` a `map.css`.
-- [ ] Menores: `L.tileLayer` sin `new`, unir imports de `capas.js`, quitar el parámetro sin uso de `crear_referencias`.
+- [x] Pasar los estilos inline de `referencias.js` a `map.css`.
+- [x] Menores: `L.tileLayer` sin `new`, unir imports de `capas.js`, quitar el parámetro sin uso de `crear_referencias`.
 
 ## Funcionalidad
 - [ ] Tooltip o popup con `Name` y `Tipo` en la red hídrica.

@@ -4,7 +4,7 @@ export function minimap (id, c, z) {
 
   const URL_ARGENMAP = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   // Capa argenmap (color)
-  const argenmap = new L.tileLayer(
+  const argenmap = L.tileLayer(
     URL_ARGENMAP,
     {
       minZoom: 0,
@@ -12,7 +12,7 @@ export function minimap (id, c, z) {
     }
   );
 
-  const map = new L.map(
+  const map = L.map(
     id,
     {
       attributionControl: false,
