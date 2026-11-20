@@ -1,5 +1,5 @@
 import * as L from 'leaflet';
-import { crearSectores, crearRedHidrica } from 'modulos/capas.js';
+import { crearSectores, crearEmbalseRoggero, crearRedHidrica } from 'modulos/capas.js';
 import { crearReferencias } from 'modulos/referencias.js'
 import { minimap } from "modulos/minimap.js";
 
@@ -115,6 +115,10 @@ function init () {
 
   // Agregar capa de sectores al mapa principal
   cuenca.capa.addTo(map);
+
+  // Agregar embalse del Dique Roggero (debajo de la red hídrica).
+  const embalseRoggero = crearEmbalseRoggero();
+  embalseRoggero.capa.addTo(map);
 
   // Agregar red hídrica.
   const redHidrica = crearRedHidrica();

@@ -1,6 +1,7 @@
 import * as L from 'leaflet';
 import { sectoresGeojson } from "geojs/sectores.js";
 import { redHidricaGeojson } from "geojs/red_hidrica.js";
+import { embalseRoggeroGeojson } from "geojs/embalse_roggero.js";
 import { estiloMapa } from "modulos/simbologia.js";
 
 export function crearSectores () {
@@ -35,4 +36,22 @@ export function crearRedHidrica () {
   );
 
   return redHidrica;
+};
+
+
+export function crearEmbalseRoggero () {
+
+  const embalseRoggero = {
+    "nombre": "embalse_roggero"
+  }
+
+  // Capa
+  embalseRoggero.capa = L.geoJson(
+    embalseRoggeroGeojson,
+    {
+      style: feature => estiloMapa('embalseRoggero', feature)
+    }
+  );
+
+  return embalseRoggero;
 };

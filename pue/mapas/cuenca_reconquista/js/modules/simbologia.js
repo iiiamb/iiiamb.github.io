@@ -2,6 +2,7 @@
 //
 // Cada capa tiene:
 //   tipo:    'poligono' o 'linea' (cómo se dibuja la muestra en la leyenda).
+//   enLeyenda: true si la capa aparece en el panel de referencias.
 //   campo:   propiedad del GeoJSON que define la clase (sin campo, una sola clase).
 //   mapa:    estilo común a todas las clases, con opciones de Leaflet
 //            (color, weight, opacity, fillColor, fillOpacity).
@@ -15,6 +16,7 @@
 export const SIMBOLOGIA = {
   sectores: {
     tipo: 'poligono',
+    enLeyenda: true,
     campo: 'Tramo',
     mapa: { color: '#607d8b', weight: 1, opacity: 1, fillOpacity: 0.6 },
     leyenda: { opacity: 0.7 },
@@ -24,8 +26,18 @@ export const SIMBOLOGIA = {
       { valor: 'Cuenca Baja',  etiqueta: 'Cuenca Baja',  estilo: { fillColor: '#d1c4e9' } },
     ],
   },
+  embalseRoggero: {
+    tipo: 'poligono',
+    enLeyenda: false,
+    mapa: { color: '#005ce6', weight: 0.5, opacity: 0.9, fillColor: '#005ce6', fillOpacity: 0.2 },
+    leyenda: { },
+    clases: [
+      { etiqueta: 'Embalse Dique Roggero' },
+    ],
+  },
   redHidrica: {
     tipo: 'linea',
+    enLeyenda: true,
     mapa: { color: '#005ce6', weight: 0.5, opacity: 0.9 },
     leyenda: { opacity: 1 },
     clases: [
@@ -46,13 +58,16 @@ export function estiloMapa(nombreCapa, feature) {
 }
 
 // Entradas del panel de referencias, en orden de capas y de clases.
+// Solo las capas con enLeyenda: true.
 export function entradasLeyenda() {
-  return Object.values(SIMBOLOGIA).flatMap(capa =>
-    capa.clases.map(clase => ({
-      tipo: capa.tipo,
-      etiqueta: clase.etiqueta,
-      // Los estilos de la leyenda sobreescriben a los del mapa.
-      estilo: { ...capa.mapa, ...clase.estilo, ...capa.leyenda },
-    }))
-  );
+  return Object.values(SIMBOLOGIA)
+    .filter(capa => capa.enLeyenda)
+    .flatMap(capa =>
+      capa.clases.map(clase => ({
+        tipo: capa.tipo,
+        etiqueta: clase.etiqueta,
+        // Los estilos de la leyenda sobreescriben a los del mapa.
+        estilo: { ...capa.mapa, ...clase.estilo, ...capa.leyenda },
+      }))
+    );
 }

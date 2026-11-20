@@ -16,10 +16,11 @@ Mapa base de presentación del Proyecto de Unidad Ejecutora. Se ve en https://ii
 - Minimapa: Argenmap (IGN), zoom máximo 15, zoom del principal menos 5, recuadro de la vista actual.
 
 ## Capas
-| capa | archivo | fuente | fecha | geometría | atributos | se muestra |
-|---|---|---|---|---|---|---|
-| Sectores | `sectores.js` | Serman (ADA3) | COMPLETAR | 3 Polygon | `Tramo` | sí |
-| Red hídrica | `red_hidrica.js` | Serman-Lu | COMPLETAR (¿260203?) | 174 MultiLineString | `fid`, `Name`, `Tipo` | sí |
+| capa | archivo | geometría | atributos | se muestra |
+|---|---|---|---|---|
+| Sectores | `sectores.js` | 3 Polygon | `Tramo` | sí |
+| Red hídrica | `red_hidrica.js` | 174 MultiLineString | `fid`, `Name`, `Tipo` | sí |
+| Embalse Dique Roggero | `embalse_roggero.js` | 1 Polygon con 2 islas | tags de OSM y `@id`, `@version`, `@timestamp` | sí |
 
 Todas en CRS84 (lon/lat WGS84). La red hídrica trae una coordenada z igual a 0.
 
@@ -34,3 +35,4 @@ Definida en un solo lugar, `js/modules/simbologia.js`, que usan las capas y el p
 Registrar acá las decisiones de diseño con fecha.
 
 - 2026-11-20: simbología unificada en `simbologia.js`; el estilo de la leyenda se define como ajustes sobre el del mapa (`leyenda`), no como una copia.
+- 2026-11-20: embalse del Dique Roggero desde OSM. Se usa el espejo de agua (relación 1859580), no la presa (relación 3812049, el muro). Se dibuja entre sectores y red hídrica para que los cursos queden encima.
