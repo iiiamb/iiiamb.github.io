@@ -1,4 +1,4 @@
-export const sectores_geojson = {
+export const sectoresGeojson = {
   "type": "FeatureCollection",
   "name": "Sectores_CRR_Serman_ADA3",
   "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

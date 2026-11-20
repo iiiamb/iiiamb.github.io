@@ -1,4 +1,4 @@
-export const redhidrica_geojson = {
+export const redHidricaGeojson = {
   "type": "FeatureCollection",
   "name": "Red_hidrica_Serman-Lu_260203",
   "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

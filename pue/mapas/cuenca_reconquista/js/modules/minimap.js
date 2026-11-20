@@ -2,10 +2,10 @@ import * as L from 'leaflet';
 
 export function minimap (id, c, z) {
 
-  const url_argenmap = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png'
+  const URL_ARGENMAP = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   // Capa argenmap (color)
   const argenmap = new L.tileLayer(
-    url_argenmap,
+    URL_ARGENMAP,
     {
       minZoom: 0,
       maxZoom: 15 // Las capas que van al minimapa tienen zoom maximo

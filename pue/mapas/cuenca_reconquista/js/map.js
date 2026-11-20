@@ -1,15 +1,15 @@
 import * as L from 'leaflet';
-import { crear_sectores } from 'modulos/capas.js';
-import { crear_redhidrica } from 'modulos/capas.js';
-import { crear_referencias } from 'modulos/referencias.js'
+import { crearSectores } from 'modulos/capas.js';
+import { crearRedHidrica } from 'modulos/capas.js';
+import { crearReferencias } from 'modulos/referencias.js'
 import { minimap } from "modulos/minimap.js";
 
 function init () {
 
-  const url_argenmapgris = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
+  const URL_ARGENMAP_GRIS = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   // Capa argenmap gris
-  const argenmap_gris = new L.tileLayer(
-    url_argenmapgris,
+  const argenmapGris = new L.tileLayer(
+    URL_ARGENMAP_GRIS,
     {
       minZoom: 5, // Las capas que van al mapa principal tienen zoom minimo
       maxZoom: 20
@@ -17,18 +17,18 @@ function init () {
   );
 
   // Cuenca (sectores)
-  const cuenca = crear_sectores();
-  const centroide_bbox = cuenca.capa.getBounds().getCenter();
+  const cuenca = crearSectores();
+  const centroideBbox = cuenca.capa.getBounds().getCenter();
 
   // Mapa principal
   const map = new L.map(
     'map',
     {
       attributionControl: false,
-      center: centroide_bbox,
+      center: centroideBbox,
       zoom: 10,
       zoomControl: true,
-      layers: [argenmap_gris]
+      layers: [argenmapGris]
     }
   );
 
@@ -47,7 +47,7 @@ function init () {
   //=====
 
   // Crear el control
-  const attr_ctrl = new L.control.attribution(
+  const attrCtrl = new L.control.attribution(
     {
       prefix: null,
       position: 'bottomright',
@@ -55,28 +55,28 @@ function init () {
   );
 
   // Agregarlo al mapa
-  attr_ctrl.addTo(map);
+  attrCtrl.addTo(map);
 
   // Construir hiperlink anchors
-  const iiia_attr = '<a href="https://iiia.conicet.gov.ar/" title="IIIA | Instituto de Investigación e Ingeniería Ambiental" target="_blank">IIIA</a>';
-  const osm_attr = '<a href="https://www.openstreetmap.org" title="OpenStreetMap" target="_blank">OpenStreetMap</a>';
-  const argenmap_attr = '<a href="https://www.ign.gob.ar/AreaServicios/Argenmap/Introduccion" title="Introducción | Instituto Geográfico Nacional" target="_blank">Argenmap</a>';
-  const leaflet_attr = '<a href="https://leafletjs.com/" title="Leaflet - a JavaScript library for interactive maps" target="_blank">Leaflet</a>';
+  const iiiaAttr = '<a href="https://iiia.conicet.gov.ar/" title="IIIA | Instituto de Investigación e Ingeniería Ambiental" target="_blank">IIIA</a>';
+  const osmAttr = '<a href="https://www.openstreetmap.org" title="OpenStreetMap" target="_blank">OpenStreetMap</a>';
+  const argenmapAttr = '<a href="https://www.ign.gob.ar/AreaServicios/Argenmap/Introduccion" title="Introducción | Instituto Geográfico Nacional" target="_blank">Argenmap</a>';
+  const leafletAttr = '<a href="https://leafletjs.com/" title="Leaflet - a JavaScript library for interactive maps" target="_blank">Leaflet</a>';
   // Construir el contenido html
-  const attr_contents = [iiia_attr, argenmap_attr, leaflet_attr, osm_attr].join(' + ');
+  const attrContents = [iiiaAttr, argenmapAttr, leafletAttr, osmAttr].join(' + ');
   // Asignar contenido al elemento del control
-  attr_ctrl.getContainer().innerHTML = attr_contents;
+  attrCtrl.getContainer().innerHTML = attrContents;
 
 
   //=====
   // Control minimapa
   //=====
 
-  const mm_ctrl = L.control({position: 'bottomright'});
+  const mmCtrl = L.control({position: 'bottomright'});
 
   // onAdd(): Crear y devolver el elemento DOM del panel
-  mm_ctrl.onAdd = function (map) {
-    // crear un elemento div de clase panel_minimapa
+  mmCtrl.onAdd = function (map) {
+    // crear un elemento div de clase mm_panel
     const panel = L.DomUtil.create('div', 'mm_panel');
     // deshabilitar propagación de eventos para este elemento
     L.DomEvent.disableScrollPropagation(panel);
@@ -88,12 +88,12 @@ function init () {
     return panel;
   };
   // Agregar al mapa principal
-  mm_ctrl.addTo(map);
+  mmCtrl.addTo(map);
 
   // Crear el minimap dentro del elemento div con id minimap del control
   const mm = minimap(
     'minimap',
-    centroide_bbox,
+    centroideBbox,
     map.getZoom() - 5
   );
 
@@ -118,11 +118,11 @@ function init () {
   cuenca.capa.addTo(map);
 
   // Agregar red hídrica.
-  const redhidrica = crear_redhidrica();
-  redhidrica.capa.addTo(map);
+  const redHidrica = crearRedHidrica();
+  redHidrica.capa.addTo(map);
 
   // Agregar referencias.
-  const referencias = crear_referencias();
+  const referencias = crearReferencias();
   referencias.addTo(map);
 };
 

@@ -1,9 +1,9 @@
 import * as L from 'leaflet';
 
-export function crear_referencias(mapa) {
-  const panel_referencias = L.control({ position: 'topright' });
+export function crearReferencias(mapa) {
+  const panelReferencias = L.control({ position: 'topright' });
 
-  panel_referencias.onAdd = function () {
+  panelReferencias.onAdd = function () {
     const div = L.DomUtil.create('div', 'info legend');
 
     div.style.backgroundColor = 'white';
@@ -45,5 +45,5 @@ export function crear_referencias(mapa) {
     return div;
   };
 
-  return panel_referencias;
+  return panelReferencias;
 }

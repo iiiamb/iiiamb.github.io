@@ -7,7 +7,7 @@ Sitio estático del IIIA (CONICET-UNSAM) en GitHub Pages. El contenido principal
 - `CLAUDE.md`, `docs/` y `scripts/` están excluidos de la publicación en `_config.yml`.
 
 ## Convenciones
-- JavaScript: camelCase para variables y funciones, MAYÚSCULAS para constantes, nombres en castellano. El código todavía usa snake_case; el renombre está en pendientes.
+- JavaScript: camelCase para variables y funciones, MAYÚSCULAS para constantes, nombres en castellano. Clases CSS e ids del DOM quedan como están.
 - Las propiedades de los GeoJSON se dejan como vienen de los datos.
 - Sin build ni dependencias locales: Leaflet por CDN e `importmap`.
 

@@ -1,16 +1,16 @@
 import * as L from 'leaflet';
-import { sectores_geojson } from "geojs/sectores.js";
-import { redhidrica_geojson } from "geojs/red_hidrica.js";
+import { sectoresGeojson } from "geojs/sectores.js";
+import { redHidricaGeojson } from "geojs/red_hidrica.js";
 
-export function crear_sectores () {
+export function crearSectores () {
   const sectores = {
     "nombre": "sectores"
   }
 
-sectores.getColor = function (Tramo) {
-  return Tramo == 'Cuenca Alta'  ? ['#b3e5fc', '#607d8b'] :
-         Tramo == 'Cuenca Media' ? ['#b2dfdb', '#607d8b'] :
-         Tramo == 'Cuenca Baja'  ? ['#d1c4e9', '#607d8b'] :
+sectores.getColor = function (tramo) {
+  return tramo == 'Cuenca Alta'  ? ['#b3e5fc', '#607d8b'] :
+         tramo == 'Cuenca Media' ? ['#b2dfdb', '#607d8b'] :
+         tramo == 'Cuenca Baja'  ? ['#d1c4e9', '#607d8b'] :
                   ['#ffe2d4', '#607d8b'];
 }
 
@@ -27,7 +27,7 @@ sectores.getColor = function (Tramo) {
 
   // Capa
   sectores.capa = L.geoJson(
-    sectores_geojson,
+    sectoresGeojson,
     {
       style: sectores.estilo
     }
@@ -37,18 +37,18 @@ sectores.getColor = function (Tramo) {
 };
 
 
-export function crear_redhidrica () {
+export function crearRedHidrica () {
 
-  const redhidrica = {
+  const redHidrica = {
     "nombre": "red_hidrica"
   }
 
-  redhidrica.getColor = function () {
+  redHidrica.getColor = function () {
     return ['#005ce6']
   }
 
-  redhidrica.estilo = function (feature) {
-    const color = redhidrica.getColor();
+  redHidrica.estilo = function (feature) {
+    const color = redHidrica.getColor();
     return {
         color: color[0],
         weight: 0.5,
@@ -57,12 +57,12 @@ export function crear_redhidrica () {
   };
 
   // Capa
-  redhidrica.capa = L.geoJson(
-    redhidrica_geojson,
+  redHidrica.capa = L.geoJson(
+    redHidricaGeojson,
     {
-      style: redhidrica.estilo
+      style: redHidrica.estilo
     }
   );
 
-  return redhidrica;
+  return redHidrica;
 };
