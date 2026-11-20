@@ -6,10 +6,9 @@ import { minimap } from "modulos/minimap.js";
 
 function init () {
 
-  const url_argenmap = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   const url_argenmapgris = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
-  // Capa argenmap
-  const argenmap = new L.tileLayer(
+  // Capa argenmap gris
+  const argenmap_gris = new L.tileLayer(
     url_argenmapgris,
     {
       minZoom: 5, // Las capas que van al mapa principal tienen zoom minimo
@@ -29,7 +28,7 @@ function init () {
       center: centroide_bbox,
       zoom: 10,
       zoomControl: true,
-      layers: [argenmap]
+      layers: [argenmap_gris]
     }
   );
 

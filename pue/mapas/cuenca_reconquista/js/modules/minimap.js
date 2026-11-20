@@ -3,9 +3,8 @@ import * as L from 'leaflet';
 export function minimap (id, c, z) {
 
   const url_argenmap = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png'
-  const url_argenmapgris = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
-  // Capa argenmap gris
-  const argenmap_gris = new L.tileLayer(
+  // Capa argenmap (color)
+  const argenmap = new L.tileLayer(
     url_argenmap,
     {
       minZoom: 0,
@@ -20,7 +19,7 @@ export function minimap (id, c, z) {
       center: c,
       zoom: z,
       zoomControl: false,
-      layers: [argenmap_gris]
+      layers: [argenmap]
     }
   );
 
