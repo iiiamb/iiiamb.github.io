@@ -34,7 +34,7 @@ Definida en un solo lugar, `js/modules/simbologia.js`, que usan las capas y el p
 ## Captura en PNG
 `python3 scripts/exportar_mapa.py [--commit REF] [--salida ARCHIVO]` extrae el commit con `git archive`, lo sirve en localhost y lo captura con Chromium headless. Por defecto escribe `capturas/cuenca_reconquista_<sha>.png` (excluido de Jekyll y de git).
 
-- Viewport 882 × 624 px CSS, escala 2: 1764 × 1248 px, marcado a 300 dpi (149 × 106 mm, entra en el ancho de texto de una A4).
+- Viewport 920 × 624 px CSS, escala 2: 1840 × 1248 px, marcado a 300 dpi (156 × 106 mm, entra en el ancho de texto de una A4).
 - La escala gráfica está a 54 px del borde izquierdo, a la derecha de los botones de zoom: se pueden recortar hasta 100 px de la izquierda de la captura para sacar los botones sin cortar la escala.
 - No depende solo del commit: Leaflet (fijado en 1.9.4) y las teselas del IGN se descargan al capturar. Dos corridas seguidas difieren en unos pocos píxeles del minimapa (diferencia máxima 2/255).
 
@@ -46,3 +46,4 @@ Registrar acá las decisiones de diseño con fecha.
 - 2026-11-20: etiquetas con el nombre de los arroyos Arias, La Choza y El Durazno y del Río de la Reconquista, en `etiquetas.js`. Cada una se ubica por `fid` y fracción del largo de la línea; el texto es `Name`. Una sola inclinación por etiqueta, la de la cuerda entre los extremos de la etiqueta sobre la línea, recalculada con cada zoom. Itálica serif de 11 px en el azul de la red hídrica, con halo blanco. Se ocultan por debajo del zoom 10. El Arias se etiqueta una sola vez, sobre la feature larga (fid 102); la otra feature con ese nombre (fid 118, 4 km, aislada al norte) no se etiqueta.
 - 2026-11-20: captura reproducible por commit con `scripts/exportar_mapa.py`. Zoom 10 fijo; viewport 882 × 624, el más chico en proporción √2 apaisada en el que la cuenca queda a 8 px o más de los controles (referencias, minimapa, zoom, escala, créditos) y a 10 px o más del borde. Escala 2: texto y vectores nítidos, teselas del mapa base ampliadas.
 - 2026-11-20: escala gráfica corrida a la derecha de los botones de zoom (`margin-left: 54px` en `map.css`), también en el mapa web, para poder recortar los botones de la captura.
+- 2026-11-20: centro del mapa corrido al sureste 55 × 15 px en zoom 10 respecto del centro de la cuenca (`DESPLAZAMIENTO_CENTRO` en `map.js`), también en el mapa web: con el minimapa abajo a la derecha, la cuenca centrada se veía descentrada. El viewport de la captura pasa a 920 × 624 (ya no en proporción √2), elegidos a ojo entre variantes de desplazamiento y viewport. El minimapa arranca centrado en el mismo punto que el mapa principal.

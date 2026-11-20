@@ -35,9 +35,10 @@ RAIZ = Path(__file__).resolve().parent.parent
 RUTA_MAPA = "pue/mapas/cuenca_reconquista/"
 DIR_CAPTURAS = RAIZ / "capturas"
 
-# Viewport mínimo en proporción √2 (apaisado) en el que la cuenca, con zoom 10,
-# no se superpone con los controles. A 300 dpi: 1764 × 1248 px = 149 × 106 mm.
-VIEWPORT = (882, 624)
+# Elegido a ojo, junto con DESPLAZAMIENTO_CENTRO de map.js, para que la cuenca
+# (zoom 10) quede balanceada frente al minimapa.
+# A 300 dpi: 1840 × 1248 px = 156 × 106 mm.
+VIEWPORT = (920, 624)
 ESCALA = 2
 DPI = 300
 # Tiempo virtual máximo para que carguen teselas y módulos (ms).

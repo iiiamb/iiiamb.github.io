@@ -20,13 +20,22 @@ function init () {
   const cuenca = crearSectores();
   const centroideBbox = cuenca.capa.getBounds().getCenter();
 
+  // Centro del mapa: el de la cuenca corrido al sureste (px en ZOOM_INICIAL),
+  // para que la cuenca quede arriba a la izquierda, lejos del minimapa.
+  const ZOOM_INICIAL = 10;
+  const DESPLAZAMIENTO_CENTRO = L.point(55, 15);
+  const centroMapa = L.CRS.EPSG3857.pointToLatLng(
+    L.CRS.EPSG3857.latLngToPoint(centroideBbox, ZOOM_INICIAL).add(DESPLAZAMIENTO_CENTRO),
+    ZOOM_INICIAL
+  );
+
   // Mapa principal
   const map = L.map(
     'map',
     {
       attributionControl: false,
-      center: centroideBbox,
-      zoom: 10,
+      center: centroMapa,
+      zoom: ZOOM_INICIAL,
       zoomControl: true,
       layers: [argenmapGris]
     }
@@ -93,7 +102,7 @@ function init () {
   // Crear el minimap dentro del elemento div con id minimap del control
   const mm = minimap(
     'minimap',
-    centroideBbox,
+    centroMapa,
     map.getZoom() - 5
   );
 
