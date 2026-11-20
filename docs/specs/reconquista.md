@@ -24,14 +24,7 @@ Mapa base de presentación del Proyecto de Unidad Ejecutora. Se ve en https://ii
 Todas en CRS84 (lon/lat WGS84). La red hídrica trae una coordenada z igual a 0.
 
 ## Simbología
-| elemento | relleno | borde |
-|---|---|---|
-| Cuenca Alta | `#b3e5fc` | `#607d8b`, 1 px |
-| Cuenca Media | `#b2dfdb` | `#607d8b`, 1 px |
-| Cuenca Baja | `#d1c4e9` | `#607d8b`, 1 px |
-| Cursos de agua | — | `#005ce6`, 0.5 px |
-
-Opacidad de relleno de los sectores: 0.6.
+Definida en un solo lugar, `js/modules/simbologia.js`, que usan las capas y el panel de referencias. La leyenda parte del estilo del mapa y puede ajustarlo: en el mapa los polígonos son semitransparentes para dejar ver el mapa base, en la leyenda (fondo blanco) se usa otra opacidad para que los colores se parezcan a los que se ven en el mapa.
 
 ## Interacciones
 - Actuales: zoom, desplazamiento, minimapa sincronizado, escala, referencias.
@@ -39,3 +32,5 @@ Opacidad de relleno de los sectores: 0.6.
 
 ## Decisiones
 Registrar acá las decisiones de diseño con fecha.
+
+- 2026-11-20: simbología unificada en `simbologia.js`; el estilo de la leyenda se define como ajustes sobre el del mapa (`leyenda`), no como una copia.

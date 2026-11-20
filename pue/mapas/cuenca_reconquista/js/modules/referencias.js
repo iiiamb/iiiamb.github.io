@@ -1,4 +1,5 @@
 import * as L from 'leaflet';
+import { entradasLeyenda } from 'modulos/simbologia.js';
 
 export function crearReferencias(mapa) {
   const panelReferencias = L.control({ position: 'topright' });
@@ -15,29 +16,22 @@ export function crearReferencias(mapa) {
     div.style.lineHeight = '15px';
     div.style.color = '#333';
 
-    const referencias = [
-      { tipo: 'poligono', color: '#b3e5fc', borde: '#607d8b', texto: 'Cuenca Alta' },
-      { tipo: 'poligono', color: '#b2dfdb', borde: '#607d8b', texto: 'Cuenca Media' },
-      { tipo: 'poligono', color: '#d1c4e9', borde: '#607d8b', texto: 'Cuenca Baja' },
-      { tipo: 'linea', color: '#005ce6', texto: 'Cursos de agua' }
-    ];
-
     div.innerHTML = '<h4 style="margin: 0 0 8px; font-size: 12px; font-weight: bold;">Referencias</h4>';
 
-    referencias.forEach(item => {
-      if (item.tipo === 'poligono') {
+    entradasLeyenda().forEach(({ tipo, etiqueta, estilo }) => {
+      if (tipo === 'poligono') {
         div.innerHTML += `
           <div style="display: flex; align-items: center; margin-bottom: 4px;">
-            <i style="width: 18px; height: 13px; float: left; margin-right: 8px; opacity: 0.7; background: ${item.color}; border: 1px solid ${item.borde};"></i>
-            <span>${item.texto}</span>
+            <i style="width: 18px; height: 13px; float: left; margin-right: 8px; opacity: ${estilo.opacity}; background: ${estilo.fillColor}; border: ${estilo.weight}px solid ${estilo.color};"></i>
+            <span>${etiqueta}</span>
           </div>`;
-      } else if (item.tipo === 'linea') {
+      } else if (tipo === 'linea') {
         div.innerHTML += `
           <div style="display: flex; align-items: center; margin-bottom: 4px;">
             <svg width="18" height="12" style="margin-right: 8px; float: left;">
-              <polyline points="0,8 6,4 12,6 18,2" style="fill:none; stroke:${item.color}; stroke-width:0.5" />
+              <polyline points="0,8 6,4 12,6 18,2" style="fill:none; stroke:${estilo.color}; stroke-width:${estilo.weight}; stroke-opacity:${estilo.opacity}" />
             </svg>
-            <span>${item.texto}</span>
+            <span>${etiqueta}</span>
           </div>`;
       }
     });
