@@ -20,7 +20,6 @@ Mapa base de presentación del Proyecto de Unidad Ejecutora. Se ve en https://ii
 |---|---|---|---|---|---|---|
 | Sectores | `sectores.js` | Serman (ADA3) | COMPLETAR | 3 Polygon | `Tramo` | sí |
 | Red hídrica | `red_hidrica.js` | Serman-Lu | COMPLETAR (¿260203?) | 174 MultiLineString | `fid`, `Name`, `Tipo` | sí |
-| Cuenca | `cuenca_reconq-secr_ener.js` | Secretaría de Energía | COMPLETAR | 1 MultiPolygon | `cuenca`, `sistema`, `region_hid`, `id` | no |
 
 Todas en CRS84 (lon/lat WGS84). La red hídrica trae una coordenada z igual a 0.
 

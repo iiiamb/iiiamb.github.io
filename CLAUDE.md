@@ -4,7 +4,7 @@ Sitio estático del IIIA (CONICET-UNSAM) en GitHub Pages. El contenido principal
 
 - Pendientes: `docs/pendientes.md`. Al cerrar un punto, tildarlo en el mismo commit.
 - Especificaciones: `docs/specs/`, un archivo por mapa. Las decisiones de diseño se registran ahí.
-- `CLAUDE.md` y `docs/` están excluidos de la publicación en `_config.yml`.
+- `CLAUDE.md`, `docs/` y `scripts/` están excluidos de la publicación en `_config.yml`.
 
 ## Convenciones
 - JavaScript: camelCase para variables y funciones, MAYÚSCULAS para constantes, nombres en castellano. El código todavía usa snake_case; el renombre está en pendientes.
@@ -12,10 +12,10 @@ Sitio estático del IIIA (CONICET-UNSAM) en GitHub Pages. El contenido principal
 - Sin build ni dependencias locales: Leaflet por CDN e `importmap`.
 
 ## Verificación local
-Desde la raíz del repo:
+Desde la raíz del repo, con el servidor sin caché (evita tener que recargar con Ctrl+F5):
 
 ```bash
-python3 -m http.server 8000
+python3 scripts/servidor.py 8000
 ```
 
 y abrir http://localhost:8000/pue/mapas/cuenca_reconquista/
