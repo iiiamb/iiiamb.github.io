@@ -13,6 +13,12 @@
   margin: auto;
 }
 
+/* Escala a la derecha de los botones de zoom (10 + 34 + 10 px), para poder
+   recortar los botones de la captura sin cortar la escala. */
+.leaflet-left .leaflet-control-scale {
+  margin-left: 54px;
+}
+
 /* Panel de referencias */
 .legend {
   background-color: white;
