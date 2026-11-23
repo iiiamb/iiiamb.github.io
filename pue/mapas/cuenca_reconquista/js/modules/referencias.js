@@ -10,7 +10,9 @@ export function crearReferencias() {
     div.innerHTML = '<h4>Referencias</h4>';
 
     entradasLeyenda().forEach(({ tipo, etiqueta, estilo }) => {
-      if (tipo === 'poligono') {
+      if (tipo === 'seccion') {
+        div.innerHTML += `<h5 class="ref_seccion">${etiqueta}</h5>`;
+      } else if (tipo === 'poligono') {
         div.innerHTML += `
           <div class="ref_item">
             <i class="ref_muestra" style="opacity: ${estilo.opacity}; background: ${estilo.fillColor}; border: ${estilo.weight}px solid ${estilo.color};"></i>
