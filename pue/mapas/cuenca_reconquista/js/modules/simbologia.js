@@ -78,6 +78,12 @@ export function estiloMapa(nombreCapa, feature) {
   return { ...capa.mapa, ...buscarClase(capa, feature)?.estilo };
 }
 
+// Etiqueta de la clase de una feature (la de la leyenda); si no hay clase, el valor del campo.
+export function etiquetaClase(nombreCapa, feature) {
+  const capa = SIMBOLOGIA[nombreCapa];
+  return buscarClase(capa, feature)?.etiqueta ?? feature.properties[capa.campo];
+}
+
 // Entradas del panel de referencias, en orden de capas y de clases.
 // Solo las capas con enLeyenda: true. Si la capa tiene seccion, una entrada
 // de tipo 'seccion' va antes de sus clases.

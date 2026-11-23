@@ -31,7 +31,7 @@ Para convertir una capa nueva (`.geojson` o `.geojsonl`, en CRS84) al formato de
 Definida en un solo lugar, `js/modules/simbologia.js`, que usan las capas y el panel de referencias. La leyenda parte del estilo del mapa y puede ajustarlo: en el mapa los polígonos son semitransparentes para dejar ver el mapa base, en la leyenda (fondo blanco) se usa otra opacidad para que los colores se parezcan a los que se ven en el mapa.
 
 ## Interacciones
-- Actuales: zoom, desplazamiento, minimapa sincronizado, escala, referencias, etiquetas de cursos de agua desde zoom 10.
+- Actuales: zoom, desplazamiento, minimapa sincronizado, escala, referencias, etiquetas de cursos de agua desde zoom 10, popup al hacer click en una unidad de humedal.
 - Previstas: ver `docs/pendientes.md`.
 
 ## Captura en PNG
@@ -51,3 +51,4 @@ Registrar acá las decisiones de diseño con fecha.
 - 2026-11-20: escala gráfica corrida a la derecha de los botones de zoom (`margin-left: 54px` en `map.css`), también en el mapa web, para poder recortar los botones de la captura.
 - 2026-11-20: centro del mapa corrido al sureste 55 × 15 px en zoom 10 respecto del centro de la cuenca (`DESPLAZAMIENTO_CENTRO` en `map.js`), también en el mapa web: con el minimapa abajo a la derecha, la cuenca centrada se veía descentrada. El viewport de la captura pasa a 920 × 624 (ya no en proporción √2), elegidos a ojo entre variantes de desplazamiento y viewport. El minimapa arranca centrado en el mismo punto que el mapa principal.
 - 2026-11-23: unidades de humedal con el estilo de `unidades_humedal.qml` (categorías por `UH_nombre`, relleno opaco, borde de 0.26 mm ≈ 1 px). Se dibujan sobre los sectores y debajo del embalse y la red hídrica. En las referencias van después de Cursos de agua, bajo el título "Unidades de Humedal", con las seis clases de `UH_nombre` (propiedad `seccion` en `simbologia.js`). El orden de las capas en `SIMBOLOGIA` es el de la leyenda; el de dibujo lo da `map.js`.
+- 2026-11-23: popup al hacer click en una unidad de humedal: título "Unidades de Humedal", la clase (etiqueta de la leyenda, con tildes, en lugar del valor crudo de `UH_nombre`) y enlaces a los datos (RI CONICET) y al informe (Zenodo). Si hay unidades superpuestas, solo la de arriba. Las demás capas tienen `interactive: false`: no reciben el click y lo dejan pasar a las unidades que estén debajo. El click sobre una unidad no llega al mapa.

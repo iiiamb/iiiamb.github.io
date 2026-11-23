@@ -13,12 +13,8 @@
 - [x] Menores: `L.tileLayer` sin `new`, unir imports de `capas.js`, quitar el parámetro sin uso de `crear_referencias`.
 
 ## Funcionalidad
-- [ ] Tooltip o popup con `Name` y `Tipo` en la red hídrica.
+- [x] Tooltip o popup en las unidades de humedal.
 - [ ] Control de capas.
-
-## Datos
-- [ ] Red hídrica: quitar la coordenada z (siempre 0) y reducir decimales.
-- [ ] Completar la procedencia de cada capa en `docs/specs/reconquista.md`.
 
 ## Publicación
 - [x] Después del push, verificar que `iiiamb.github.io/CLAUDE.html` y `/docs/pendientes.html` den 404.
