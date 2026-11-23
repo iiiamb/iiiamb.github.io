@@ -26,6 +26,22 @@ export const SIMBOLOGIA = {
       { valor: 'Cuenca Baja',  etiqueta: 'Cuenca Baja',  estilo: { fillColor: '#d1c4e9' } },
     ],
   },
+  // Estilo de unidades_humedal.qml (QGIS): borde de 0.26 mm ≈ 1 px, relleno opaco.
+  unidadesHumedal: {
+    tipo: 'poligono',
+    enLeyenda: false,
+    campo: 'UH_nombre',
+    mapa: { weight: 1, opacity: 1, fillOpacity: 1 },
+    leyenda: { },
+    clases: [
+      { valor: 'Banado',                              etiqueta: 'Bañado',                              estilo: { color: '#fff299', fillColor: '#fff299' } },
+      { valor: 'Canada',                              etiqueta: 'Cañada',                              estilo: { color: '#a0e188', fillColor: '#a0e188' } },
+      { valor: 'Canal activo',                        etiqueta: 'Canal activo',                        estilo: { color: '#232323', fillColor: '#000000' } },
+      { valor: 'Cubeta',                              etiqueta: 'Cubeta',                              estilo: { color: '#010adc', fillColor: '#010adc' } },
+      { valor: 'Humedal artifical y aguas profundas', etiqueta: 'Humedal artifical y aguas profundas', estilo: { color: '#49b1ff', fillColor: '#49b1ff' } },
+      { valor: 'Planicie de inundacion',              etiqueta: 'Planicie de inundación',              estilo: { color: '#b690fd', fillColor: '#c889fa' } },
+    ],
+  },
   embalseRoggero: {
     tipo: 'poligono',
     enLeyenda: false,

@@ -21,8 +21,11 @@ Mapa base de presentación del Proyecto de Unidad Ejecutora. Se ve en https://ii
 | Sectores | `sectores.js` | 3 Polygon | `Tramo` | sí |
 | Red hídrica | `red_hidrica.js` | 174 MultiLineString | `fid`, `Name`, `Tipo` | sí |
 | Embalse Dique Roggero | `embalse_roggero.js` | 1 Polygon con 2 islas | tags de OSM y `@id`, `@version`, `@timestamp` | sí |
+| Unidades de humedal | `unidades_humedal.js` | 3929 MultiPolygon, algunos inválidos | `UH_nombre`, `Tipo_UH_id`, `UH_id`, `Area_ha`, `Perim_km`, `UPH_cod`, `UPH_nombre`, `SUPH_id` | sí |
 
 Todas en CRS84 (lon/lat WGS84). La red hídrica trae una coordenada z igual a 0.
+
+Para convertir una capa nueva (`.geojson` o `.geojsonl`, en CRS84) al formato de `js/geojs/`: `python3 scripts/geojson_a_js.py ENTRADA [--salida ARCHIVO.js] [--variable NOMBRE]`.
 
 ## Simbología
 Definida en un solo lugar, `js/modules/simbologia.js`, que usan las capas y el panel de referencias. La leyenda parte del estilo del mapa y puede ajustarlo: en el mapa los polígonos son semitransparentes para dejar ver el mapa base, en la leyenda (fondo blanco) se usa otra opacidad para que los colores se parezcan a los que se ven en el mapa.
@@ -47,3 +50,4 @@ Registrar acá las decisiones de diseño con fecha.
 - 2026-11-20: captura reproducible por commit con `scripts/exportar_mapa.py`. Zoom 10 fijo; viewport 882 × 624, el más chico en proporción √2 apaisada en el que la cuenca queda a 8 px o más de los controles (referencias, minimapa, zoom, escala, créditos) y a 10 px o más del borde. Escala 2: texto y vectores nítidos, teselas del mapa base ampliadas.
 - 2026-11-20: escala gráfica corrida a la derecha de los botones de zoom (`margin-left: 54px` en `map.css`), también en el mapa web, para poder recortar los botones de la captura.
 - 2026-11-20: centro del mapa corrido al sureste 55 × 15 px en zoom 10 respecto del centro de la cuenca (`DESPLAZAMIENTO_CENTRO` en `map.js`), también en el mapa web: con el minimapa abajo a la derecha, la cuenca centrada se veía descentrada. El viewport de la captura pasa a 920 × 624 (ya no en proporción √2), elegidos a ojo entre variantes de desplazamiento y viewport. El minimapa arranca centrado en el mismo punto que el mapa principal.
+- 2026-11-23: unidades de humedal con el estilo de `unidades_humedal.qml` (categorías por `UH_nombre`, relleno opaco, borde de 0.26 mm ≈ 1 px). Se dibujan sobre los sectores y debajo del embalse y la red hídrica. Todavía no están en las referencias.
