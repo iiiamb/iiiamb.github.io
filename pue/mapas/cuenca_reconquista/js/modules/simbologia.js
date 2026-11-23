@@ -88,12 +88,14 @@ export function etiquetaClase(nombreCapa, feature) {
 // Solo las capas con enLeyenda: true. Si la capa tiene seccion, una entrada
 // de tipo 'seccion' va antes de sus clases.
 export function entradasLeyenda() {
-  return Object.values(SIMBOLOGIA)
-    .filter(capa => capa.enLeyenda)
-    .flatMap(capa => [
+  return Object.entries(SIMBOLOGIA)
+    .filter(([, capa]) => capa.enLeyenda)
+    .flatMap(([nombreCapa, capa]) => [
       ...(capa.seccion ? [{ tipo: 'seccion', etiqueta: capa.seccion }] : []),
       ...capa.clases.map(clase => ({
         tipo: capa.tipo,
+        nombreCapa,
+        valor: clase.valor,
         etiqueta: clase.etiqueta,
         // Los estilos de la leyenda sobreescriben a los del mapa.
         estilo: { ...capa.mapa, ...clase.estilo, ...capa.leyenda },

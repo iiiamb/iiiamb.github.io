@@ -1,5 +1,5 @@
 import * as L from 'leaflet';
-import { crearSectores, crearUnidadesHumedal, crearEmbalseRoggero, crearRedHidrica } from 'modulos/capas.js';
+import { crearPaneles, crearSectores, crearUnidadesHumedal, crearEmbalseRoggero, crearRedHidrica } from 'modulos/capas.js';
 import { crearReferencias } from 'modulos/referencias.js'
 import { crearEtiquetasCursos } from 'modulos/etiquetas.js';
 import { minimap } from "modulos/minimap.js";
@@ -123,6 +123,9 @@ function init () {
     recuadro.setBounds(map.getBounds());
   });
 
+  // Paneles que fijan el orden de dibujo de las capas.
+  crearPaneles(map);
+
   // Agregar capa de sectores al mapa principal
   cuenca.capa.addTo(map);
 
@@ -139,10 +142,18 @@ function init () {
   redHidrica.capa.addTo(map);
 
   // Agregar etiquetas de cursos de agua (se muestran según el zoom).
-  crearEtiquetasCursos(map);
+  const etiquetasCursos = crearEtiquetasCursos(map);
 
-  // Agregar referencias.
-  const referencias = crearReferencias();
+  // Agregar referencias, con lo que hace cada casilla al tildarla o destildarla.
+  const referencias = crearReferencias({
+    sectores: cuenca.mostrarClase,
+    unidadesHumedal: unidadesHumedal.mostrarClase,
+    // Cursos de agua: red hídrica, embalse y etiquetas, juntos.
+    redHidrica: (valor, visible) => {
+      [redHidrica.capa, embalseRoggero.capa].forEach(capa => visible ? capa.addTo(map) : capa.remove());
+      etiquetasCursos.mostrar(visible);
+    },
+  });
   referencias.addTo(map);
 };
 

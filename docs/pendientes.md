@@ -14,7 +14,7 @@
 
 ## Funcionalidad
 - [x] Tooltip o popup en las unidades de humedal.
-- [ ] Control de capas.
+- [x] Control de capas.
 
 ## Publicación
 - [x] Después del push, verificar que `iiiamb.github.io/CLAUDE.html` y `/docs/pendientes.html` den 404.

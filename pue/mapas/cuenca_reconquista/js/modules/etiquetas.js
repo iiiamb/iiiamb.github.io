@@ -104,8 +104,11 @@ export function crearEtiquetasCursos(map) {
     });
   }
 
+  // Se puede ocultar desde las referencias, junto con los cursos de agua.
+  let visible = true;
+
   function mostrarSegunZoom() {
-    if (map.getZoom() < ZOOM_MINIMO_ETIQUETAS) {
+    if (!visible || map.getZoom() < ZOOM_MINIMO_ETIQUETAS) {
       capa.remove();
     } else {
       // Primero se agrega, para que el texto esté en el DOM y se pueda medir su ancho.
@@ -117,5 +120,10 @@ export function crearEtiquetasCursos(map) {
   map.on('zoomend', mostrarSegunZoom);
   mostrarSegunZoom();
 
-  return capa;
+  function mostrar(nuevoVisible) {
+    visible = nuevoVisible;
+    mostrarSegunZoom();
+  }
+
+  return { mostrar };
 }

@@ -48,6 +48,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 4px;
+  cursor: pointer;
+}
+
+/* Casilla para mostrar u ocultar la clase */
+.legend .ref_item input {
+  margin: 0 6px 0 0;
 }
 
 /* Muestra de cada referencia; colores y opacidad vienen de simbologia.js */
