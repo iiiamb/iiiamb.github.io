@@ -56,6 +56,11 @@
   margin: 0 6px 0 0;
 }
 
+/* Sin casillas en la captura (?captura en la URL, ver map.js) */
+.captura .legend .ref_item input {
+  display: none;
+}
+
 /* Muestra de cada referencia; colores y opacidad vienen de simbologia.js */
 .legend .ref_muestra {
   float: left;

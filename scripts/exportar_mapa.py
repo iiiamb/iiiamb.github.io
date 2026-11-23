@@ -35,10 +35,11 @@ RAIZ = Path(__file__).resolve().parent.parent
 RUTA_MAPA = "pue/mapas/cuenca_reconquista/"
 DIR_CAPTURAS = RAIZ / "capturas"
 
-# Elegido a ojo, junto con DESPLAZAMIENTO_CENTRO de map.js, para que la cuenca
-# (zoom 10) quede balanceada frente al minimapa.
-# A 300 dpi: 1840 × 1248 px = 156 × 106 mm.
-VIEWPORT = (920, 624)
+# Proporción 16:10. El mapa se centra en un punto fijo (DESPLAZAMIENTO_CENTRO de
+# map.js), así que el ancho solo define cuánto se separan los controles de la
+# cuenca: con 1000 px las referencias quedan a 29 px de la cuenca.
+# A 300 dpi: 2000 × 1250 px = 169 × 106 mm.
+VIEWPORT = (1000, 625)
 ESCALA = 2
 DPI = 300
 # Tiempo virtual máximo para que carguen teselas y módulos (ms).
@@ -134,7 +135,8 @@ def main():
         extraer_commit(sha, tmp)
         servidor, puerto = servir(tmp)
         try:
-            capturar(f"http://127.0.0.1:{puerto}/{RUTA_MAPA}", salida, VIEWPORT, ESCALA, ESPERA_MS)
+            # ?captura: el mapa oculta las casillas de las referencias.
+            capturar(f"http://127.0.0.1:{puerto}/{RUTA_MAPA}?captura", salida, VIEWPORT, ESCALA, ESPERA_MS)
         finally:
             servidor.shutdown()
 

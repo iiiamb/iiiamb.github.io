@@ -6,6 +6,12 @@ import { minimap } from "modulos/minimap.js";
 
 function init () {
 
+  // Modo captura (?captura en la URL, lo usa scripts/exportar_mapa.py):
+  // las referencias se muestran sin casillas (ver map.css).
+  if (new URLSearchParams(location.search).has('captura')) {
+    document.documentElement.classList.add('captura');
+  }
+
   const URL_ARGENMAP_GRIS = 'https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png'
   // Capa argenmap gris
   const argenmapGris = L.tileLayer(
